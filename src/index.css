@@ -1,0 +1,109 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.siderbarComponent {
+  margin: 0px -15px;
+  padding: 20px;
+  background-color: #102759;
+  height: 100vh;
+}
+
+.siderbarComponent .h2 {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 31px;
+  /* identical to box height, or 175% */
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.27);
+}
+
+.mt-50 {
+  margin-top: 50px;
+}
+
+.pl-14 {
+  padding-left: 14px;
+}
+
+.btn-fixed {
+  position: absolute;
+  bottom: 70px;
+}
+
+.btn-upload {
+  background: #F7B633;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  padding: 17px 50px;
+}
+
+.btn-upload span {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 33px;
+  color: #FFFFFF;
+}
+
+.list-group-item {
+  margin-top: 15px;
+  background: #102759;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.list-group-item:first-child {
+  margin-top: 0;
+}
+
+.list-group-item.active {
+  background: #1c3472;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  border-color: transparent;
+}
+
+.list-group-item p.first {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 31px;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.list-group-item p.second {
+  color: #5d65ca;
+  margin: 0;
+}
+
+.d-inline-grid {
+  display: inline-grid;
+}
+
+.pl-10 {
+  padding-left: 10px;
+}
+
+.ul-inline {
+  display: -webkit-inline-box;
+}
+
+.sidebar-heading {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 31px;
+  text-transform: uppercase;
+  margin-top: 51px;
+  margin-bottom: 9px;
+  color: rgba(255, 255, 255, 0.27);
+}
