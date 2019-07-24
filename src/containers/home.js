@@ -42,7 +42,8 @@ class Home extends React.Component {
                             <br/>
                             <List 
                                 list={this.state.list} 
-                                _delete={this.delete}/>
+                                _delete={this.delete}
+                            />
                     </div>
                 </div>
             </div>
