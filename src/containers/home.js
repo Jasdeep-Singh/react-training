@@ -25,7 +25,6 @@ class Home extends React.Component {
     }
     delete(i){
         console.log('delete',i);
-        this.setState({button: "Delete"});
     }
     render() {
         return (
