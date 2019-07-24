@@ -18,19 +18,16 @@ class Home extends React.Component {
     }
 
     onSave(){
-       // console.log(this.refs.demo.value);
        const list = this.state.list;
        list.push(this.refs.demo.value);
         this.setState({list});
         this.refs.demo.value = '';
-     // console.log(list);
     }
     delete(i){
         console.log('delete',i);
         this.setState({button: "Delete"});
     }
     render() {
-       // console.log(this.state.list);
         return (
             <div className="container-fluid">
                 <div className="row">
