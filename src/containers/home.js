@@ -5,7 +5,7 @@ import { bindActionCreators } from "redux";
 import { Link } from "react-router-dom";
 import List from '../components/list';
 import { Card, CardImg, CardText, CardBody,
-    CardTitle,  Button, FormGroup, Label } from 'reactstrap';
+    CardTitle,  Button, FormGroup, Label, Collapse } from 'reactstrap';
 
 class Home extends React.Component {
     constructor(props) {
@@ -14,10 +14,12 @@ class Home extends React.Component {
             name: 'Add Todo',
             value: '',
             button: 'Add',
-            list:[]
+            list:[],
+            collapse: false
         };
        this.delete = this.delete.bind(this);
        this.onSave = this.onSave.bind(this);
+       this.toggle = this.toggle.bind(this);
     }
 
     onSave(){
@@ -29,6 +31,9 @@ class Home extends React.Component {
     delete(i){
         console.log('delete',i);
     }
+    toggle() {
+        this.setState(state => ({ collapse: !state.collapse }));
+      }
     render() {
         return (
             <div className="container-fluid">
@@ -38,9 +43,9 @@ class Home extends React.Component {
                 <CardTitle>React Training</CardTitle>
                 <CardText>React is a declarative, efficient, and flexible JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called “components”.</CardText>
                 <div className="row">
-                    <div className="col-sm-6">
-                    <Label for="email">{this.state.name}</Label>
+                    <div className="col-sm-4">                    
                         <FormGroup>
+                        <Label for="todo">{this.state.name}</Label>
                            <input 
                             type="text"
                             ref="demo"
@@ -56,15 +61,31 @@ class Home extends React.Component {
                             </FormGroup>
                             </div>
                             <div className="col-sm-6">
-                            <List 
-                                list={this.state.list} 
-                                _delete={this.delete}
-                            />
+                            <FormGroup>
+                            <Label for="todo">Todo List</Label>
+                            <br/>
+                            <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>View List</Button>
+                        <Collapse isOpen={this.state.collapse}>
+                        <Card>
+                            <CardBody>
+                                {this.state.list.length > 0 ?
+                                 <List 
+                                    list={this.state.list} 
+                                    _delete={this.delete}
+                                /> 
+                                :
+                                'Empty list!'
+                                }
+                           
+                            </CardBody>
+                        </Card>
+                        </Collapse>
+                        </FormGroup>   
                          </div>
-                    </div>
-                </CardBody>
-            </Card>                
-            </div>
+                        </div>
+                        </CardBody>
+                    </Card>                
+                </div>
         );
     }
 }

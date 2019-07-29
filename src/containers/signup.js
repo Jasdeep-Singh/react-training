@@ -31,7 +31,7 @@ export default class Login extends React.Component {
     render() {
         console.log("this.state", this.state.user);
         return (
-            <div className="form-group col-md-6 col-md-offset-3">
+            <div className="col-md-6 offset-3">
                 <LocalForm
                     onSubmit={this.handleSubmit}
                     model="user"

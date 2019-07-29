@@ -21,8 +21,10 @@ export default class Example extends React.Component {
     return (
       <div>
         <Navbar color="faded" light>
-          <Link to="/" className="mr-auto navbar-brand">Home</Link>
-          <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
+          <Link to="/" className="mr-auto navbar-brand">Home App</Link>
+          <Link to="/login" className="nav-link">Login</Link>
+                <Link to="/signup" className="nav-link">Signup</Link>
+          {/* <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse isOpen={!this.state.collapsed} navbar>
             <Nav navbar>
               <NavItem>
@@ -30,7 +32,7 @@ export default class Example extends React.Component {
                 <Link to="/signup" className="nav-link">Signup</Link>
               </NavItem>
             </Nav>
-          </Collapse>
+          </Collapse> */}
         </Navbar>
       </div>
     );
