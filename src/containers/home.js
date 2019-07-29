@@ -24,15 +24,19 @@ class Home extends React.Component {
 
     onSave(){
        const list = this.state.list;
-       list.push(this.refs.demo.value);
+       if(this.refs.demo.value.trim().length > 0){
+        list.push(this.refs.demo.value);
+       }
+       
         this.setState({list});
         this.refs.demo.value = '';
     }
-    delete(i){
-        console.log('delete',i);
+    delete(index){ 
+        this.state.list.splice(index,1);
+        this.setState({...this.state});
     }
     toggle() {
-        this.setState(state => ({ collapse: !state.collapse }));
+        this.setState({ collapse: !this.state.collapse });
       }
     render() {
         return (
