@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from "prop-types";
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
+import { Link } from "react-router-dom";
 import List from '../components/list';
 
 class Home extends React.Component {
@@ -45,7 +46,9 @@ class Home extends React.Component {
                                 list={this.state.list} 
                                 _delete={this.delete}/>
                     </div>
-                </div>
+                    <Link to="/login">Go to login</Link>   
+                    <Link to="/signup">Signup</Link> 
+                                 </div>
             </div>
         );
     }
