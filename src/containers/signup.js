@@ -1,6 +1,7 @@
 import React from 'react';
 import { LocalForm, Control, Errors } from 'react-redux-form';
 import validator, {maxlength} from '../utilities/validator';
+import { Button, FormGroup, Label } from 'reactstrap';
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -34,7 +35,8 @@ export default class Login extends React.Component {
                 <LocalForm
                     onSubmit={this.handleSubmit}
                     model="user"
-                >
+                ><FormGroup>
+                    <Label for="first_name">First Name</Label>
                     <Control.text
                         model=".first_name"
                         className="form-control"
@@ -47,6 +49,9 @@ export default class Login extends React.Component {
                             isRequired: 'Please provide an first_name address.',
                             maxlength : "First Name should be 10 char long"
                         }} />
+                        </FormGroup>
+                        <FormGroup>
+                        <Label for="last_name">Last Name</Label>
                     <Control.text
                         model=".last_name"
                         placeholder="Last Name"
@@ -58,6 +63,9 @@ export default class Login extends React.Component {
                         messages={{
                             isRequired: 'Please provide an last_name address.'
                         }} />
+                        </FormGroup>
+                        <FormGroup>
+                        <Label for="email">Email</Label>
                     <Control.text
                         model=".email"
                         type="email"
@@ -71,15 +79,20 @@ export default class Login extends React.Component {
                             isRequired: 'Please provide an email address.'
                         }} />
 
-
-
+</FormGroup>
+<FormGroup><Label for="password">Password</Label>
                     <Control.text model=".password" placeholder="Password" type="password" className="form-control" />
-
-                    {/* <Control.select model=".role" className="form-control">
+                    </FormGroup>
+                    <FormGroup>
+            <Control.select model=".role" className="form-control">
+                <option value="">Select Role</option>
                 <option value="user">User</option>
                 <option value="admin">Admin</option>
-                </Control.select> */}
-                    <button type="submit">Signup</button>
+                </Control.select>
+                </FormGroup>
+                <FormGroup>
+                    <Button type="submit">Signup</Button>
+                    </FormGroup>
                 </LocalForm>
             </div>
 

@@ -4,12 +4,14 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import { Link } from "react-router-dom";
 import List from '../components/list';
+import { Card, CardImg, CardText, CardBody,
+    CardTitle,  Button, FormGroup, Label } from 'reactstrap';
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: 'Todo Demo App',
+            name: 'Add Todo',
             value: '',
             button: 'Add',
             list:[]
@@ -30,25 +32,38 @@ class Home extends React.Component {
     render() {
         return (
             <div className="container-fluid">
+            <Card>
+             <CardImg top width="100%" height="400px" src="./images/react-img.png" alt="Card image cap" />
+                <CardBody>
+                <CardTitle>React Training</CardTitle>
+                <CardText>React is a declarative, efficient, and flexible JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called “components”.</CardText>
                 <div className="row">
-                    <div className="col-12">
-                        <h1>{this.state.name}</h1>
-                        <input 
+                    <div className="col-sm-6">
+                    <Label for="email">{this.state.name}</Label>
+                        <FormGroup>
+                           <input 
                             type="text"
                             ref="demo"
+                            className="form-control"
                             //onChange={(event) =>  this.setState({value: event.target.value })}
                             //value={this.state.value}
                             />
-                            <button onClick={this.onSave}>{this.state.button}</button>
-                            <br/>
+                              </FormGroup>
+                           
+                           
+                           <FormGroup>
+                            <Button onClick={this.onSave}>{this.state.button}</Button>
+                            </FormGroup>
+                            </div>
+                            <div className="col-sm-6">
                             <List 
                                 list={this.state.list} 
                                 _delete={this.delete}
                             />
+                         </div>
                     </div>
-                    <Link to="/login">Go to login</Link>   
-                    <Link to="/signup">Signup</Link> 
-                                 </div>
+                </CardBody>
+            </Card>                
             </div>
         );
     }

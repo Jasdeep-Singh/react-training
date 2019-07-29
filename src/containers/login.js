@@ -1,5 +1,6 @@
 import React from 'react';
 import { LocalForm, Control, Errors } from 'react-redux-form';
+import { Button, FormGroup, Label } from 'reactstrap';
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -12,11 +13,13 @@ export default class Login extends React.Component {
 
   render() {
     return (
-        <div className="form-group col-md-6 col-md-offset-3">
+        <div className="form-group col-md-6 col-md-offset-6">
              <LocalForm
                 onSubmit={(values) => this.handleSubmit(values)}
                 model="user"
             >
+            <FormGroup>
+            <Label for="email">Email</Label>
             <Control.text 
                 model=".email" 
                 type="email" 
@@ -24,22 +27,31 @@ export default class Login extends React.Component {
                 validators={{ isRequired: val => val && val.length}}
             />
             <Errors
-            model=".email"
+            model=".email"            
             messages={{
                 isRequired: 'Please provide an email address.'
             }}/>
-            
+            </FormGroup>
+            <FormGroup>
+            <Label for="password">Password</Label>
             <Control.text model=".password" type="password" className="form-control"/>
             <Errors
             model=".email"
             messages={{
                 isRequired: 'Please provide an email address.'
             }}/>
+            </FormGroup>
+            <FormGroup>
             <Control.select model=".role" className="form-control">
+                <option value="">Select Role</option>
                 <option value="user">User</option>
                 <option value="admin">Admin</option>
                 </Control.select>
-            <button type="submit">Login</button>
+                </FormGroup>
+                <FormGroup>
+            <Button type="submit">Login</Button>
+            </FormGroup>
+            
         </LocalForm>
         </div>
      
