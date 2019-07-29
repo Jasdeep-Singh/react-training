@@ -26,7 +26,6 @@ class Home extends React.Component {
     }
     delete(i){
         console.log('delete',i);
-        this.setState({button: "Delete"});
     }
     render() {
         return (
@@ -44,7 +43,8 @@ class Home extends React.Component {
                             <br/>
                             <List 
                                 list={this.state.list} 
-                                _delete={this.delete}/>
+                                _delete={this.delete}
+                            />
                     </div>
                     <Link to="/login">Go to login</Link>   
                     <Link to="/signup">Signup</Link> 
