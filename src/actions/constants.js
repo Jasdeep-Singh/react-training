@@ -4,5 +4,5 @@
  * @author: Jasdeep Singh
  */
 
-/************ LISTING *************/
-export const LISTING = 'LISTING';
+export const ADD_TODO = 'ADD_TODO';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';

@@ -33,7 +33,7 @@ export default class Login extends React.Component {
         return (
             <div className="col-md-6 offset-3">
                 <LocalForm
-                    onSubmit={this.handleSubmit}
+                    onSubmit={this.handleSubmit}                   
                     model="user"
                 ><FormGroup>
                     <Label for="first_name">First Name</Label>
@@ -45,6 +45,7 @@ export default class Login extends React.Component {
                     />
                     <Errors
                         model=".first_name"
+                        show="touched"   
                         messages={{
                             isRequired: 'Please provide an first_name address.',
                             maxlength : "First Name should be 10 char long"
@@ -60,6 +61,7 @@ export default class Login extends React.Component {
                     />
                     <Errors
                         model=".last_name"
+                        show="touched"   
                         messages={{
                             isRequired: 'Please provide an last_name address.'
                         }} />
@@ -75,6 +77,7 @@ export default class Login extends React.Component {
                     />
                     <Errors
                         model=".email"
+                        show="touched"   
                         messages={{
                             isRequired: 'Please provide an email address.'
                         }} />

@@ -4,7 +4,7 @@ export default ({list, _delete}) => {
         <ul>        
         {
             list.map((value, index) =>          
-                <li key={index}>{value} <button onClick={() => _delete(index)}>Delete</button></li>
+                <li key={index}>{value.text} <button onClick={() => _delete(index)}>Delete</button></li>
             )
         }
       </ul>

@@ -5,16 +5,18 @@ import { persistCombineReducers } from 'redux-persist';
 import storage from 'redux-persist/es/storage'; // default: localStorage if web, AsyncStorage if react-native
 import { routerReducer as router } from 'react-router-redux';
 import encryptor from './encryptor';
-import product from './modules/product';
+import user from './modules/user';
+import todo from './modules/todo';
 
 const userPersistConfig = {
-  key: 'chat-app',
+  key: 'demo',
   storage: storage,
   transforms: [encryptor],
   blacklist: ['isLoading']
 };
 
 export default persistCombineReducers(userPersistConfig, {
-  product,
+  user,
+  todo,
   router
 });

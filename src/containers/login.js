@@ -6,9 +6,14 @@ export default class Login extends React.Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSubmitFailed = this.handleSubmitFailed.bind(this);
     }
     handleSubmit(values){
         console.log("values", values);
+    }
+
+    handleSubmitFailed(errors){
+        console.log("errors", errors);
     }
 
   render() {
@@ -16,6 +21,7 @@ export default class Login extends React.Component {
         <div className="col-md-6 offset-3">
              <LocalForm
                 onSubmit={(values) => this.handleSubmit(values)}
+                onSubmitFailed={this.handleSubmitFailed}
                 model="user"
             >
             <FormGroup>
@@ -27,7 +33,8 @@ export default class Login extends React.Component {
                 validators={{ isRequired: val => val && val.length}}
             />
             <Errors
-            model=".email"            
+            model=".email"  
+            show="touched"          
             messages={{
                 isRequired: 'Please provide an email address.'
             }}/>
@@ -37,6 +44,7 @@ export default class Login extends React.Component {
             <Control.text model=".password" type="password" className="form-control"/>
             <Errors
             model=".email"
+            show="touched"   
             messages={{
                 isRequired: 'Please provide an email address.'
             }}/>

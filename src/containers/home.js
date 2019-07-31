@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import { Link } from "react-router-dom";
 import List from '../components/list';
+import {add_todo} from '../actions/todo';
 import { Card, CardImg, CardText, CardBody,
     CardTitle,  Button, FormGroup, Label, Collapse } from 'reactstrap';
 
@@ -25,7 +26,8 @@ class Home extends React.Component {
     onSave(){
        const list = this.state.list;
        if(this.refs.demo.value.trim().length > 0){
-        list.push(this.refs.demo.value);
+        // list.push(this.refs.demo.value);
+        this.props.add_todo(this.refs.demo.value);
        }
        
         this.setState({list});
@@ -39,6 +41,7 @@ class Home extends React.Component {
         this.setState({ collapse: !this.state.collapse });
       }
     render() {
+        console.log(this.props);
         return (
             <div className="container-fluid">
             <Card>
@@ -72,9 +75,9 @@ class Home extends React.Component {
                         <Collapse isOpen={this.state.collapse}>
                         <Card>
                             <CardBody>
-                                {this.state.list.length > 0 ?
+                                {this.props.todo.length > 0 ?
                                  <List 
-                                    list={this.state.list} 
+                                    list={this.props.todo} 
                                     _delete={this.delete}
                                 /> 
                                 :
@@ -99,9 +102,11 @@ Home.propTypes = {
 
 const mapStateToProps = (state) =>
     ({
+        todo: state.todo
     });
 
 const mapDispatchToProps = (dispatch) => ({
+    add_todo: bindActionCreators(add_todo, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
