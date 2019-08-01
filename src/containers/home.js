@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import { Link } from "react-router-dom";
 import List from '../components/list';
-import {add_todo} from '../actions/todo';
+import {add_todo, update_todo, delete_todo} from '../actions/todo';
 import { Card, CardImg, CardText, CardBody,
     CardTitle,  Button, FormGroup, Label, Collapse } from 'reactstrap';
 
@@ -15,27 +15,33 @@ class Home extends React.Component {
             name: 'Add Todo',
             value: '',
             button: 'Add',
-            list:[],
+            id : null,
             collapse: false
         };
        this.delete = this.delete.bind(this);
        this.onSave = this.onSave.bind(this);
        this.toggle = this.toggle.bind(this);
+       this.update = this.update.bind(this);
     }
 
     onSave(){
-       const list = this.state.list;
        if(this.refs.demo.value.trim().length > 0){
-        // list.push(this.refs.demo.value);
-        this.props.add_todo(this.refs.demo.value);
+        if(this.state.id){
+            this.props.update_todo({id: this.state.id, text: this.refs.demo.value});
+            this.setState({button: "Add", id: null});
+        } else {
+            this.props.add_todo(this.refs.demo.value);
+        }        
        }
-       
-        this.setState({list});
-        this.refs.demo.value = '';
+       this.refs.demo.value = '';
     }
-    delete(index){ 
-        this.state.list.splice(index,1);
-        this.setState({...this.state});
+    update(value){
+        this.setState({button: "Update", id: value.id});
+        this.refs.demo.value = value.text;
+        console.log(value);
+    }
+    delete(id){        
+        this.props.delete_todo(id);
     }
     toggle() {
         this.setState({ collapse: !this.state.collapse });
@@ -78,6 +84,7 @@ class Home extends React.Component {
                                 {this.props.todo.length > 0 ?
                                  <List 
                                     list={this.props.todo} 
+                                    _update={this.update}
                                     _delete={this.delete}
                                 /> 
                                 :
@@ -106,7 +113,9 @@ const mapStateToProps = (state) =>
     });
 
 const mapDispatchToProps = (dispatch) => ({
-    add_todo: bindActionCreators(add_todo, dispatch)
+    add_todo: bindActionCreators(add_todo, dispatch),
+    update_todo: bindActionCreators(update_todo, dispatch),
+    delete_todo: bindActionCreators(delete_todo, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
