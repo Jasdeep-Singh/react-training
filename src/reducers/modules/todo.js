@@ -16,7 +16,7 @@ export default function reducer(state = initialState, action) {
       return [...state, {id:Date.now(), text: action.text}];
       case TYPE.UPDATE_TODO:
         const index = state.findIndex(i => i.id === action.data.id);
-        if(deletIndex > -1){
+        if(index > -1){
           state[index].text = action.data.text; 
         }
         return [...state];
