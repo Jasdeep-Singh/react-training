@@ -57,7 +57,7 @@ export default class Login extends React.Component {
                 </Control.select>
                 </FormGroup>
                 <FormGroup>
-            <Button type="submit">Login</Button>
+            <Button type="submit" className="btn btn-primary">Login</Button>
             </FormGroup>
             
         </LocalForm>
