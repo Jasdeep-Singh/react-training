@@ -22,12 +22,12 @@ class Products extends React.Component {
                 {
                     this.props.products.map(row =>
                         <Card>
-              <CardImg height="200px" width="200px" src={row.image ? row.image.src : ''} alt="Card image cap" />
+              <CardImg top height="200px" width="200px" src={row.image ? row.image.src : ''} alt="Card image cap" />
               <CardBody>
                 <CardTitle>{row.title}</CardTitle>
-                <CardSubtitle>Card subtitle</CardSubtitle>
+                <CardSubtitle>{row.product_type}</CardSubtitle>
                 <CardText>{row.body_html}</CardText>
-                <Button>Button</Button>
+                <Button>Buy</Button>
               </CardBody>
             </Card>
                         )
